@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -225,7 +226,29 @@ jTable1.setModel(tableModel);
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        saveToCSV();
+        // Buat instance JFileChooser
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Pilih lokasi untuk menyimpan file CSV");
+    
+    // Set filter file hanya untuk CSV
+    fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("CSV Files", "csv"));
+    
+    // Tampilkan dialog Save
+    int userSelection = fileChooser.showSaveDialog(this);
+    
+    if (userSelection == JFileChooser.APPROVE_OPTION) {
+        // Dapatkan file yang dipilih pengguna
+        java.io.File fileToSave = fileChooser.getSelectedFile();
+        
+        // Tambahkan ekstensi .csv jika belum ada
+        String filePath = fileToSave.getAbsolutePath();
+        if (!filePath.endsWith(".csv")) {
+            filePath += ".csv";
+        }
+        
+        // Simpan data JTable ke file CSV
+        saveTableToCSV(filePath);
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
    private void fetchWeather(String city) {
@@ -293,30 +316,33 @@ jTable1.setModel(tableModel);
     }
 }
     
-    private void saveToCSV() {
-    String filePath = "cuaca.csv"; // Nama file output
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-        // Tulis header
-        writer.write("Kota,Deskripsi Cuaca,Suhu (°C)");
-        writer.newLine();
-
-        // Tulis data dari JTable
+   private void saveTableToCSV(String filePath) {
+    try (java.io.FileWriter writer = new java.io.FileWriter(filePath)) {
+        // Tulis header (judul kolom)
+        for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            writer.append(tableModel.getColumnName(i));
+            if (i < tableModel.getColumnCount() - 1) {
+                writer.append(",");
+            }
+        }
+        writer.append("\n");
+        
+        // Tulis data baris
         for (int i = 0; i < tableModel.getRowCount(); i++) {
-            StringBuilder row = new StringBuilder();
             for (int j = 0; j < tableModel.getColumnCount(); j++) {
-                row.append(tableModel.getValueAt(i, j).toString());
+                writer.append(tableModel.getValueAt(i, j).toString());
                 if (j < tableModel.getColumnCount() - 1) {
-                    row.append(","); // Pisahkan dengan koma
+                    writer.append(",");
                 }
             }
-            writer.write(row.toString());
-            writer.newLine();
+            writer.append("\n");
         }
-
+        
+        // Tampilkan pesan sukses
         JOptionPane.showMessageDialog(this, "Data berhasil disimpan ke " + filePath, "Sukses", JOptionPane.INFORMATION_MESSAGE);
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menyimpan file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
         e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menyimpan file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
     
