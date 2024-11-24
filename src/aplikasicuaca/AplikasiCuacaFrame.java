@@ -6,6 +6,9 @@ package aplikasicuaca;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -222,6 +225,7 @@ jTable1.setModel(tableModel);
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        saveToCSV();
     }//GEN-LAST:event_jButton2ActionPerformed
 
    private void fetchWeather(String city) {
@@ -286,6 +290,33 @@ jTable1.setModel(tableModel);
     } catch (Exception e) {
         System.err.println("Gagal memuat ikon: " + e.getMessage());
         jLabelImage.setText("Gambar tidak tersedia");
+    }
+}
+    
+    private void saveToCSV() {
+    String filePath = "cuaca.csv"; // Nama file output
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+        // Tulis header
+        writer.write("Kota,Deskripsi Cuaca,Suhu (°C)");
+        writer.newLine();
+
+        // Tulis data dari JTable
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            StringBuilder row = new StringBuilder();
+            for (int j = 0; j < tableModel.getColumnCount(); j++) {
+                row.append(tableModel.getValueAt(i, j).toString());
+                if (j < tableModel.getColumnCount() - 1) {
+                    row.append(","); // Pisahkan dengan koma
+                }
+            }
+            writer.write(row.toString());
+            writer.newLine();
+        }
+
+        JOptionPane.showMessageDialog(this, "Data berhasil disimpan ke " + filePath, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menyimpan file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
     }
 }
     
