@@ -100,8 +100,6 @@ jTable1.setModel(tableModel);
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextField1.setText("jTextField1");
-
         jLabel3.setText("Pilih Kota");
 
         jButton2.setText("Export CSV");
