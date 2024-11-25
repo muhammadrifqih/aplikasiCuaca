@@ -58,9 +58,9 @@ jTable1.setModel(tableModel);
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,15 +85,15 @@ jTable1.setModel(tableModel);
                 .addContainerGap()
                 .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabelImage, javax.swing.GroupLayout.DEFAULT_SIZE, 2, Short.MAX_VALUE)
-                .addGap(34, 34, 34))
+                .addGap(19, 19, 19)
+                .addComponent(jLabelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,19 +104,6 @@ jTable1.setModel(tableModel);
 
         jLabel3.setText("Pilih Kota");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Kota", "Title 2", "Deskripsi Cuaca", "Suhu (°C)"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         jButton2.setText("Export CSV");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,12 +111,25 @@ jTable1.setModel(tableModel);
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Kota", "Deskripsi Cuaca", "Suhu (°C)"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +137,7 @@ jTable1.setModel(tableModel);
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,10 +145,11 @@ jTable1.setModel(tableModel);
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
-                .addContainerGap())
+                                .addComponent(jButton2))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,9 +167,11 @@ jTable1.setModel(tableModel);
                 .addGap(47, 47, 47)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
+
+        jPanel2.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,8 +184,8 @@ jTable1.setModel(tableModel);
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 163, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 65, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,8 +254,8 @@ jTable1.setModel(tableModel);
     }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-   private void fetchWeather(String city) {
-     String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_KEY + "&units=metric";
+  private void fetchWeather(String city) {
+    String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_KEY + "&units=metric";
     try {
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -269,7 +272,9 @@ jTable1.setModel(tableModel);
 
             JsonObject jsonObject = new com.google.gson.JsonParser().parse(jsonResponse.toString()).getAsJsonObject();
             JsonArray weatherArray = jsonObject.getAsJsonArray("weather");
-            String weatherDescription = weatherArray.get(0).getAsJsonObject().get("description").getAsString();
+            JsonObject weatherObject = weatherArray.get(0).getAsJsonObject();
+            String weatherDescription = weatherObject.get("description").getAsString();
+            String iconCode = weatherObject.get("icon").getAsString();
             double temp = jsonObject.getAsJsonObject("main").get("temp").getAsDouble();
 
             // Menampilkan deskripsi cuaca dan suhu di jLabel2
@@ -278,8 +283,8 @@ jTable1.setModel(tableModel);
             // Menambahkan data ke JTable
             tableModel.addRow(new Object[]{city, weatherDescription, temp});
 
-            // Menampilkan gambar berdasarkan kondisi cuaca
-            setWeatherImage(weatherDescription);
+            // Menampilkan gambar berdasarkan icon code
+            setWeatherImage(iconCode);
         } else {
             JOptionPane.showMessageDialog(this, "Data tidak ditemukan. Periksa nama kota.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -289,32 +294,17 @@ jTable1.setModel(tableModel);
     }
 }
    
-    private void setWeatherImage(String weatherDescription) {
-     String imagePath = "";
-    if (weatherDescription.contains("clear")) {
-        imagePath = "/images/clear_sky.png"; // Path gambar cuaca cerah
-    } else if (weatherDescription.contains("cloud")) {
-        imagePath = "/images/clouds.png"; // Path gambar berawan
-    } else if (weatherDescription.contains("rain")) {
-        imagePath = "/images/rain.png"; // Path gambar hujan
-    } else {
-        imagePath = "/images/default.png"; // Path gambar default
-    }
-
+    private void setWeatherImage(String iconCode) {
+    String imageUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
     try {
-        // Gunakan ClassLoader untuk memastikan gambar ditemukan di classpath
-        java.net.URL imageUrl = getClass().getResource(imagePath);
-        if (imageUrl != null) {
-            jLabelImage.setIcon(new ImageIcon(imageUrl));
-        } else {
-            System.err.println("Gambar tidak ditemukan: " + imagePath);
-            jLabelImage.setText("Gambar tidak tersedia");
-        }
+        ImageIcon icon = new ImageIcon(new URL(imageUrl));
+        jLabelImage.setIcon(icon); // Tampilkan ikon di JLabel
     } catch (Exception e) {
-        System.err.println("Gagal memuat ikon: " + e.getMessage());
+        System.err.println("Gagal memuat gambar cuaca: " + e.getMessage());
         jLabelImage.setText("Gambar tidak tersedia");
     }
 }
+
     
    private void saveTableToCSV(String filePath) {
     try (java.io.FileWriter writer = new java.io.FileWriter(filePath)) {
